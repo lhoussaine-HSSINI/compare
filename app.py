@@ -9,19 +9,15 @@ def main():
     list_faylat=["https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/cotepara.csv",
                  "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"]
     def  file_selector(folder_path="dataset"):
-        filenames=os.listdir(folder_path)
+        filenames=["cotepara.csv","parasconti.csv"]
         selected_filename=st.selectbox("product cotepara or parasconti", filenames)
-        return  os.path.join(folder_path, selected_filename)
+        return  selected_filename
 
     filename= file_selector()
-
-    path_file_ok=os.path.splitext(filename)[0]+os.path.splitext(filename)[1]
-    name_csv=os.path.splitext(filename)[0].split("\\")
-    st.info("you selected :::  {}".format(name_csv[1]))
-    #   Read  data
-    try:
+    st.info("you selected :::  {}".format(filename))
+    if filename =="cotepara.csv":
         df=pd.read_csv(list_faylat[0], index_col = [0])
-    except:
+    else:
         data_location = "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"
         df=pd.read_csv(data_location ,sep="\t", index_col = [0])
     #   show  data
