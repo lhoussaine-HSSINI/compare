@@ -6,6 +6,8 @@ import  pandas as pd
 def main():
     st.title("product cotepara VS product parasconti")
     st.subheader("Bonjour salim")
+    list_faylat=["https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/cotepara.csv",
+                 "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"]
     def  file_selector(folder_path="dataset"):
         filenames=os.listdir(folder_path)
         selected_filename=st.selectbox("product cotepara or parasconti", filenames)
@@ -18,9 +20,9 @@ def main():
     st.info("you selected :::  {}".format(name_csv[1]))
     #   Read  data
     try:
-        df=pd.read_csv(filename, index_col = [0])
+        df=pd.read_csv(list_faylat[0], index_col = [0])
     except:
-        data_location = "dataset/parasconti.csv"
+        data_location = "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"
         df=pd.read_csv(data_location ,sep="\t", index_col = [0])
     #   show  data
     if st.checkbox("show data"):
