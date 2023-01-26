@@ -1,13 +1,14 @@
 import  os
 import  streamlit as st
 import  pandas as pd
+from urllib.request import urlopen
 
 
 def main():
     st.title("product cotepara VS product parasconti")
     st.subheader("Bonjour salim")
-    list_faylat=["https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/cotepara.csv",
-                 "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"]
+    list_faylat=["https://res.cloudinary.com/faho-world/raw/upload/v1674691232/media/dataset/cotepara_cx6jc4.csv",
+                 "https://res.cloudinary.com/faho-world/raw/upload/v1674691223/media/dataset/parasconti_ejoall.csv"]
     def  file_selector(folder_path="dataset"):
         filenames=["cotepara.csv","parasconti.csv"]
         selected_filename=st.selectbox("product cotepara or parasconti", filenames)
@@ -18,7 +19,7 @@ def main():
     if filename =="cotepara.csv":
         df=pd.read_csv(list_faylat[0], index_col = [0])
     else:
-        data_location = "https://github.com/lhoussaine-HSSINI/compare/blob/main/dataset/parasconti.csv"
+        data_location = "https://res.cloudinary.com/faho-world/raw/upload/v1674691223/media/dataset/parasconti_ejoall.csv"
         df=pd.read_csv(data_location ,sep="\t", index_col = [0])
     #   show  data
     if st.checkbox("show data"):
